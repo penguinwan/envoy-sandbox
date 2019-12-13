@@ -1,0 +1,5 @@
+FROM envoyproxy/envoy-dev:latest
+
+RUN apt-get update && apt-get -q install -y curl vim
+
+CMD /usr/local/bin/envoy -c /etc/cluster-envoy.yaml --service-cluster envoy-proxy -l debug

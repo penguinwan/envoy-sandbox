@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+
+  downstream:
+    build:
+      context: .
+      dockerfile: Dockerfile-downstream
+    container_name: downstream_container
+    networks:
+      envoysandbox:
+        aliases:
+          - downstream_alias
+    environment:
+      - dummy=dummy
+
+  cluster:
+    build:
+      context: .
+      dockerfile: Dockerfile-cluster
+    container_name: cluster_container
+    networks:
+      envoysandbox:
+        aliases:
+          - cluster_alias
+    environment:
+      - dummy=dummy
+
+  clusterenvoy:
+    build:
+      context: .
+      dockerfile: Dockerfile-clusterenvoy
+    container_name: clusterenvoy
+    volumes:
+      - ./cluster-envoy.yaml:/etc/cluster-envoy.yaml
+    networks:
+      - envoysandbox
+    expose:
+      - "80"
+      - "8001"
+    ports:
+      - "8000:80"
+      - "8001:8001"
+
+networks:
+  envoysandbox:
+    name: envoysandbox
