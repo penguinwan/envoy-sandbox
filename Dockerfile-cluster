@@ -19,5 +19,4 @@ RUN mkdir /home/groovy/scripts
 WORKDIR /home/groovy/scripts
 COPY Cluster.groovy .
 COPY Hotswap.groovy .
-EXPOSE 8080
 CMD [ "groovy", "Cluster" ]

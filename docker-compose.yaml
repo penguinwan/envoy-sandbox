@@ -10,6 +10,8 @@ services:
       envoysandbox:
         aliases:
           - downstream_alias
+    ports:
+      - "8082:8080"
     environment:
       - dummy=dummy
 
@@ -22,6 +24,8 @@ services:
       envoysandbox:
         aliases:
           - cluster_alias
+    ports:
+      - "8081:8080"
     environment:
       - dummy=dummy
 
@@ -38,7 +42,7 @@ services:
       - "80"
       - "8001"
     ports:
-      - "8000:80"
+      - "80:80"
       - "8001:8001"
 
 networks:
