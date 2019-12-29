@@ -17,4 +17,4 @@ refresh-cluster:
 	docker-compose up -d cluster
 
 hotswap-clusterenvoy:
-	docker kill --signal=SIGHUP  clusterenvoy
+	docker exec clusterenvoy kill -1 9
