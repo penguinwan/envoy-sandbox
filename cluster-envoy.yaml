@@ -27,7 +27,7 @@ static_resources:
             config:
               http_service:
                 server_uri:
-                  uri: downstream_alias:8081
+                  uri: downstream_alias:8080
                   cluster: downstream
                   timeout: 0.25s
                 authorization_request:
@@ -49,7 +49,7 @@ static_resources:
             address:
               socket_address:
                 address: cluster_alias
-                port_value: 8081
+                port_value: 8080
   - name: downstream
     connect_timeout: 0.25s
     type: strict_dns
@@ -57,7 +57,7 @@ static_resources:
     hosts:
     - socket_address:
         address: downstream_alias
-        port_value: 8082
+        port_value: 8080
 admin:
   access_log_path: "/dev/null"
   address:

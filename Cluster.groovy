@@ -13,7 +13,7 @@ def camelContext = new DefaultCamelContext()
 
 camelContext.addRoutes(new RouteBuilder() {
     def void configure() {
-        from("netty4-http:http://0.0.0.0:8082").process { message ->
+        from("netty4-http:http://0.0.0.0:8080").process { message ->
             new GroovyShell().parse( new File('Hotswap.groovy') ).with {
               liveMethod(message)
             }

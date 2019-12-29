@@ -6,12 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile-downstream
     container_name: downstream_container
+    expose:
+      - "8080"
     networks:
       envoysandbox:
         aliases:
           - downstream_alias
-    ports:
-      - "8082:8080"
     environment:
       - dummy=dummy
 
@@ -20,12 +20,12 @@ services:
       context: .
       dockerfile: Dockerfile-cluster
     container_name: cluster_container
+    expose:
+      - "8080"
     networks:
       envoysandbox:
         aliases:
           - cluster_alias
-    ports:
-      - "8081:8080"
     environment:
       - dummy=dummy
 
